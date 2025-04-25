@@ -60,7 +60,7 @@ export const InfoList = ({ hash, signedMsg, balance, contractAddress }: InfoList
         )}
         {hash && (
         <section>
-            <h2>Sign Tx</h2>
+            <h2>Transaction hash / status</h2>
             <pre>
                 Hash: {hash}<br />
                 Status: {statusTx}<br />
