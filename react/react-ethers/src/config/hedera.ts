@@ -14,7 +14,9 @@ export const hederaTestnet = defineChain({
     rpcUrls: {
         default: {
             http: ['https://testnet.hashio.io/api'],
-            webSocket: ['https://testnet.hashio.io/api:8546'],
+            webSocket: ['ws://testnet.hashio.io/api:8546'],
+            // http: ['http://localhost:7546'],
+            // webSocket: ['ws://localhost:8546'],
         },
     },
     blockExplorers: {
