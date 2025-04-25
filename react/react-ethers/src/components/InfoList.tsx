@@ -5,9 +5,9 @@ import {
     useAppKitEvents,
     useAppKitAccount,
     useWalletInfo,
-    useAppKitProvider, 
+    useAppKitProvider,
     useAppKitNetworkCore,
-    type Provider 
+    type Provider
      } from '@reown/appkit/react'
 import { BrowserProvider } from 'ethers'
 
@@ -15,9 +15,10 @@ interface InfoListProps {
     hash: string;
     signedMsg: string;
     balance: string;
+    contractAddress: string;
 }
 
-export const InfoList = ({ hash, signedMsg, balance }: InfoListProps) => {
+export const InfoList = ({ hash, signedMsg, balance, contractAddress }: InfoListProps) => {
     const [statusTx, setStatusTx] = useState('');
 
     const { themeMode, themeVariables } = useAppKitTheme();
@@ -32,7 +33,7 @@ export const InfoList = ({ hash, signedMsg, balance }: InfoListProps) => {
         console.log("Events: ", events);
     }, [events]);
 
-    
+
     useEffect(() => {
         const checkTransactionStatus = async () => {
             if (hash && walletProvider) {
@@ -73,6 +74,14 @@ export const InfoList = ({ hash, signedMsg, balance }: InfoListProps) => {
                 signedMsg: {signedMsg}<br />
             </pre>
         </section>
+        )}
+        {contractAddress && (
+            <section>
+                <h2>Contract Address</h2>
+                <pre>
+                contractAddress: {contractAddress}<br />
+            </pre>
+            </section>
         )}
         <section>
             <h2>useAppKit</h2>
