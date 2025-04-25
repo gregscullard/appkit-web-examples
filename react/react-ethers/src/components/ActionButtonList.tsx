@@ -6,8 +6,8 @@ import {useState} from "react";
 
 // test transaction
 const TEST_TX = {
-  to: "0x0000000000000000000000000000000000000004",  // account id 0.0.4
-  value: parseUnits('0.0001', 'gwei')
+  to: "0x00000000000000000000000000000000002199C8",  // account id 0.2202056
+  value: parseUnits('10000000000', 'wei') // 1 tinybar
 }
 
 interface ActionButtonListProps {
@@ -55,7 +55,7 @@ export const ActionButtonList =  ({ sendHash, sendSignMsg, sendBalance, sendCont
         const signer = new JsonRpcSigner(provider, address)
 
         const factory = new ContractFactory(abi, bytecode, signer);
-        const contract = await factory.deploy("test", {
+        const contract = await factory.deploy("test2", {
                     gasLimit: 150000,
                 });
 
