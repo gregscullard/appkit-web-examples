@@ -36,6 +36,7 @@ export const ActionButtonList =  ({ sendHash, sendSignMsg, sendBalance, sendCont
 
     // function to send a tx
     const handleSendTx = async () => {
+      sendHash("");
       if (!walletProvider || !address) throw Error('user is disconnected');
 
       const provider = new BrowserProvider(walletProvider, chainId);
@@ -66,6 +67,7 @@ export const ActionButtonList =  ({ sendHash, sendSignMsg, sendBalance, sendCont
     }
 
     const handleExecuteContract = async () => {
+        sendHash("");
         if (!walletProvider || !address) throw Error('user is disconnected');
         if (!contractAddress) throw Error('no contract deployed');
 
@@ -81,7 +83,7 @@ export const ActionButtonList =  ({ sendHash, sendSignMsg, sendBalance, sendCont
         console.log("Transaction sent, waiting for confirmation...");
         await tx.wait()
 
-        // sendContractAddress("testing contract address");
+        sendHash(tx.hash);
     }
     // function to sing a msg
     const handleSignMsg = async () => {
