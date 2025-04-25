@@ -49,7 +49,7 @@ export function App() {
           <SmartContractActionButtonList />
           <div className="advice">
             <p>
-              This projectId only works on localhost. <br/>
+              This projectId ({projectId}) only works on localhost. <br/>
               Go to <a href="https://cloud.reown.com" target="_blank" className="link-button" rel="Reown Cloud">Reown Cloud</a> to get your own.
             </p>
           </div>
