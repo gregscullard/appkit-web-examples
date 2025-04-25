@@ -1,6 +1,7 @@
-import { mainnet, arbitrum, sepolia } from '@reown/appkit/networks'
+// import { mainnet, arbitrum, sepolia } from '@reown/appkit/networks'
 import type { AppKitNetwork } from '@reown/appkit/networks'
 import { EthersAdapter } from '@reown/appkit-adapter-ethers'
+import {hederaTestnet} from "./hedera.ts";
 
 // Get projectId from https://cloud.reown.com
 export const projectId = import.meta.env.VITE_PROJECT_ID || "b56e18d47c72ab683b10814fe9495694" // this is a public projectId only to use on localhost
@@ -18,7 +19,8 @@ export const metadata = {
 }
 
 // for custom networks visit -> https://docs.reown.com/appkit/react/core/custom-networks
-export const networks = [mainnet, arbitrum, sepolia] as [AppKitNetwork, ...AppKitNetwork[]]
+// export const networks = [mainnet, arbitrum, sepolia] as [AppKitNetwork, ...AppKitNetwork[]]
+export const networks = [hederaTestnet] as [AppKitNetwork, ...AppKitNetwork[]]
 
 // Set up Solana Adapter
 export const ethersAdapter = new EthersAdapter();
