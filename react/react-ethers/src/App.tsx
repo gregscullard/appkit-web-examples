@@ -1,7 +1,7 @@
 import { createAppKit } from '@reown/appkit/react'
 import { networks, projectId, metadata, ethersAdapter } from './config'
 import { ActionButtonList } from './components/ActionButtonList'
-import { SmartContractActionButtonList } from './components/SmartContractActionButtonList'
+// import { SmartContractActionButtonList } from './components/SmartContractActionButtonList'
 import { InfoList } from './components/InfoList'
 import { useState } from 'react'
 
@@ -26,7 +26,11 @@ export function App() {
   const [transactionHash, setTransactionHash] = useState('');
   const [signedMsg, setSignedMsg] = useState('');
   const [balance, setBalance] = useState('');
+  const [contractAddress, setContractAddress] = useState('');
 
+  const receiveContractAddress = (contractAddress: string)=> {
+    setContractAddress(contractAddress);
+  }
 
   const receiveHash = (hash: string) => {
     setTransactionHash(hash); // Update the state with the transaction hash
@@ -45,15 +49,15 @@ export function App() {
       <img src="/reown.svg" alt="Reown" style={{ width: '150px', height: '150px' }} />
       <h1>AppKit ethers React dApp Example</h1>
           <appkit-button />
-          <ActionButtonList sendHash={receiveHash} sendSignMsg={receiveSignedMsg} sendBalance={receivebalance}/>
-          <SmartContractActionButtonList />
+          <ActionButtonList sendHash={receiveHash} sendSignMsg={receiveSignedMsg} sendBalance={receivebalance} sendContractAddress={receiveContractAddress}/>
+          {/*<SmartContractActionButtonList />*/}
           <div className="advice">
             <p>
               This projectId ({projectId}) only works on localhost. <br/>
               Go to <a href="https://cloud.reown.com" target="_blank" className="link-button" rel="Reown Cloud">Reown Cloud</a> to get your own.
             </p>
           </div>
-          <InfoList hash={transactionHash} signedMsg={signedMsg} balance={balance}/>
+          <InfoList hash={transactionHash} signedMsg={signedMsg} balance={balance}  contractAddress={contractAddress}/>
     </div>
   )
 }
